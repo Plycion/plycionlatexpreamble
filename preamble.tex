@@ -1,0 +1,231 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amssymb,amsmath,amsthm, amsfonts}
+\usepackage{mathtools}
+\usepackage[mathscr]{euscript}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{stmaryrd}
+\usepackage{xspace}
+\usepackage{framed}
+\usepackage{enumerate}
+\usepackage{color}
+
+\usepackage{mathptmx}
+\usepackage{todonotes}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{bussproofs}
+\usepackage{clrscode3e}
+
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+% Styles
+\pagestyle{empty}
+\setlength{\parindent}{0in}
+
+% Environments
+\sfcode`\.=1001
+\sfcode`\?=1001
+\sfcode`\!=1001
+\sfcode`\:=1001
+
+\newcommand{\tightoverset}[2]{%
+  \mathop{#2}\limits^{\vbox to -.5ex{\kern-0.2ex\hbox{$#1$}\vss}}}
+
+% Commands
+\newcommand{\bb}[1]     {\mathbb{#1}}
+\newcommand{\dfn}[1]    {\textsc{#1}}
+\newcommand{\power}[1]  {\mathcal{P}({#1})}
+\newcommand{\dominated} {\preccurlyeq}
+\newcommand{\seg}[1]    {\text{seg }{#1}}
+\newcommand{\dom}[1]    {\text{dom}({#1})}
+\newcommand{\fld}[1]    {\text{fld }{#1}}
+\newcommand{\ran}[1]    {\text{ran}({#1})}
+\newcommand{\ist}[1]    {\text{it }{#1}}
+\newcommand{\istt}[1]   {\text{it }{\tuple{#1}}}
+\newcommand{\naturals}  {\bb{N}}
+\newcommand{\integers}  {\bb{Z}}
+\newcommand{\posint}    {\bb{Z}^+}
+\newcommand{\rationals} {\bb{Q}}
+\newcommand{\reals}     {\bb{R}}
+\newcommand{\card}[1]   {\abs{#1}}
+\newcommand{\rank}[1]   {\text{rank }#1}
+\newcommand{\note}[1]   {\begin{framed} \textbf{Note:} #1\end{framed}}
+\newcommand{\context}[1]{\textit{\textbf{Context}: #1}\newline}
+\newcommand{\setof}[1]  {\ensuremath{\left \{ #1 \right \}}}
+\newcommand{\tuple}[1]  {\ensuremath{\left \langle #1 \right \rangle}}
+\newcommand{\image}[1]  {\llbracket#1\rrbracket}
+\newcommand{\fnc}[1]    {\pazocal{#1}}
+\newcommand{\fnk}[1]    {\mathfrak{#1}}
+\newcommand{\tiff}      {\text{   iff   }}
+\newcommand{\univ}[1]{  \abs{\fnk{#1}}}
+\newcommand{\rl}[1]{    \hfill [{#1}]}
+\newcommand{\ind}       {\hspace{4 mm}}
+\newcommand{\df}        {\coloneqq}
+\newcommand{\ein}       {\text{ }\underline\in\text{ }}
+\newcommand{\equin}     {\approx}
+\newcommand{\ldir}{($\Leftarrow$)\xspace}
+\newcommand{\rdir}{($\Rightarrow$)\xspace}
+\newcommand{\str}{$(\ast)$\xspace}
+\newcommand{\eqhyp}{\underset{H}{=}}
+\newcommand{\eqstr}{\overset{\ast}{=}}
+\newcommand{\divides}{\mid}
+\newcommand{\difset}[1]{\mathsf{#1}}
+\newcommand{\nth}{\text{th}}
+\newcommand{\wand}{\text{ and }}
+\newcommand{\topo}{\fnc{T}}
+\newcommand{\fto}{\longrightarrow}
+\newcommand{\closure}[1]{\overline{#1}} % closure
+\newcommand{\inter}[1]{\text{Int}(#1)} % interior
+\newcommand{\boundary}[1]{\partial{(#1)}} % boundary
+\newcommand{\comp}{\circ} % composition
+\newcommand{\ccc}{countable chain condition\xspace}
+\newcommand{\funct}[3]{{#1}:{#2}\fto{#3}}
+\newcommand{\st}{\;\middle\vert\;}
+\newcommand{\preimage}[2]{{#1}^{-1}\image{#2}}
+\newcommand{\warn}[1]{{\color{red}#1}}
+\newcommand{\fixed}{{\color{blue}{Fixed.}}}
+\newcommand{\dx}{\,\mathrm{d}x}
+\newcommand{\homeo}{\cong}
+\newcommand{\anki}[3]{\begin{framed}{\textbf{Question:}\\#1\\\textbf{Answer:}\\#2\\\textbf{Tags:}\\#3}\end{framed}}
+\newcommand{\emstring}{\ensuremath{\epsilon}}
+\newcommand{\cplus}{\oplus}
+\newcommand{\field}{\bb{F}}
+\newcommand{\diftext}[1]{\textsf{#1}}
+\newcommand{\edged}{\multimapboth}
+\newcommand{\esem}{\biff}
+\newcommand{\proves}{\to}
+\newcommand{\lto}{\supset}
+\newcommand{\asn}{\shortleftarrow}
+\newcommand{\ms}{\tightoverset{\cdot}{-}}
+\newcommand{\hier}[1]{\mathcal{E}^{#1}}
+
+% Text
+\newcommand\wiff{\ifnum\spacefactor=1001 If and only if\xspace\else if and only if\xspace\fi}
+\newcommand\wlg{\ifnum\spacefactor=1001 Without loss of generality\xspace\else without loss of generality\xspace\fi}
+\newcommand\wrt{\ifnum\spacefactor=1001 With respect to\xspace\else with respect to\xspace\fi}
+\newcommand\lindel{\ifnum\spacefactor=1001 Lindel\"{o}f\xspace\else Lindel\"{o}f\xspace\fi}
+\newcommand\zorn{\ifnum\spacefactor=1001 Zorn's Lemma\xspace\else Zorn's Lemma\xspace\fi}
+\newcommand\nonem{\ifnum\spacefactor=1001 Nonempty\xspace\else nonempty\xspace\fi}
+\newcommand\dfa{\ifnum\spacefactor=1001 DFA\xspace\else DFA\xspace\fi}
+
+% Delimiters
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+% Shortcuts
+\newcommand{\emset}{\varnothing}
+\newcommand{\rest}{\upharpoonright}
+\newcommand{\cont}{\perp}
+\newcommand{\nand}{\mid}
+\newcommand{\iso}{\cong}
+\newcommand{\bto}{\Rightarrow}
+
+% Redefinitions
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\mod}[1]{\text{Mod }{#1}}
+\let\biff\iff
+\let\iff\leftrightarrow
+\renewcommand{\inplus}{\ensuremath{\stackrel{*}{\in}}}
+\renewcommand{\to}{\rightarrow}
+\renewcommand{\iff}{\text{ iff }}
+
+% Theorems
+\theoremstyle{plain}% default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{KL}{Klein's Lemma}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem*{answ}{Answer}
+\newtheorem*{solution}{Solution}
+\newtheorem{prob}{Problem}
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+% \newtheorem{exercise}{Exercise}
+\newtheorem{case}{Case}
+
+\newtheorem{que}{Question}
+\newmdtheoremenv[%
+outerlinewidth=0.5,
+backgroundcolor=black!5,%
+fontcolor=black,
+outerlinecolor=black,%
+innertopmargin = \topskip,%
+splittopskip = \topskip,%
+ntheorem = true,%
+skipabove = \baselineskip,%
+skipbelow = \baselineskip,%
+leftmargin=25,%
+rightmargin=25,
+roundcorner=0]
+{Que}{Question}
+
+\newtheorem{exercise}{Exercise}
+\newmdtheoremenv[%
+outerlinewidth=0.5,
+backgroundcolor=white,%
+fontcolor=black,
+outerlinecolor=black,%
+innertopmargin = \topskip,%
+splittopskip = \topskip,%
+ntheorem = true,%
+skipabove = \baselineskip,%
+skipbelow = \baselineskip,%
+leftmargin=25,%
+rightmargin=25,
+innerbottommargin=10,
+roundcorner=0]
+{exer}{Exercise}
+
+\newtheorem{lemma}{Lemma}
+\newmdtheoremenv[%
+tikzsetting={draw=black,dashed,line width=1pt,dash pattern = on 20pt off 3pt},linecolor=white,backgroundcolor=white,
+innertopmargin = \topskip,%
+splittopskip = \topskip,%
+ntheorem = true,%
+skipabove = \baselineskip,%
+skipbelow = \baselineskip,%
+leftmargin=25,%
+rightmargin=25,
+innerbottommargin=10,
+roundcorner=0]
+{lemmab}{Lemma}
+
+\newmdtheoremenv[%
+tikzsetting={draw=black,dashed,line width=1pt,dash pattern = on 20pt off 3pt},linecolor=white,backgroundcolor=white,
+innertopmargin = \topskip,%
+splittopskip = \topskip,%
+ntheorem = true,%
+skipabove = \baselineskip,%
+skipbelow = \baselineskip,%
+leftmargin=25,%
+rightmargin=25,
+innerbottommargin=10,
+roundcorner=0]
+{theorem}{Theorem}
+
+% Document Definitions
+\pagestyle{plain}
+\linespread{1.6}
+\binoppenalty=\maxdimen % prevent line breaking in math
+\relpenalty=\maxdimen % prevent line breaking in math
+\usepackage[textwidth=16cm,textheight=24cm]{geometry}
+
+% Title
+\title{Hierarchy Theory}
+\date{}
+\author{Itai David Hass\\ \#999440243\\ University of Toronto\\ Winter 2014}
+
+\begin{document}
+Hello $\fnc L\subseteq \phi \ms a$.
+\end{document}
